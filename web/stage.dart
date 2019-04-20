@@ -66,7 +66,6 @@ class Stage extends stagexl.Stage implements stagexl.Animatable {
     if (juggler.elapsedTime.floor() % 2 == 0 && (juggler.elapsedTime - time).floor() % 2 != 0) { //Add a new cell every 2 seconds.
       Cell newCell = createNewCell();
       growingCells[newCell] = newCell.size; // Store the new cell with it's target size.
-      cells.add(newCell);
       newCell.size = 0; // Change the size to 0, since new cells should start small.
       addCell(newCell);
     }
@@ -85,7 +84,7 @@ class Stage extends stagexl.Stage implements stagexl.Animatable {
     // Just checking the mod will trigger for every frame that second, so we need to check that the last frame was on a previous second.
     if (juggler.elapsedTime.floor() % 2 == 0 && (juggler.elapsedTime - time).floor() % 2 != 0) { //Add a new cell every 2 seconds.
       Cell cell;
-      while (cell == null || growingCells.containsKey(cell)) {
+      while (cell == null || growingCells.containsKey(cell) || shrinkingCells.contains(cell)) {
         cell = cells[rand.nextInt(cells.length)];
       }
       shrinkingCells.add(cell);

@@ -34,7 +34,7 @@ class Cell extends Sprite implements Animatable {
 
   @override
   bool advanceTime(num time) {
-    double movementScale = 10; //TODO: Find a better place to put this and make it scale with expected range of charge values
+    double movementScale = 30; //TODO: Find a better place to put this and make it scale with expected range of charge values
     Point newLocation = location + potential * (charge * movementScale);
 
     // Set a hard bound to prevent things from getting off the field.
@@ -50,6 +50,7 @@ class Cell extends Sprite implements Animatable {
       ..circle(location.x, location.y, size)
       ..fillColor(Color.White);
 
+    return true;
   }
 
   Point<num> getNearestEdge() {
@@ -57,6 +58,8 @@ class Cell extends Sprite implements Animatable {
     return stageCenter + centerToCell * (stageRadius / centerToCell.magnitude);
   }
 
-
+  String toString() {
+    return "Size: ${size.toStringAsFixed(2)}, X: ${location.x.toStringAsFixed(1)}, Y: ${location.y.toStringAsFixed(1)}";
+  }
 
 }
