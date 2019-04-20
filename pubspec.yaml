@@ -9,6 +9,7 @@ environment:
 
 dependencies:
   stagexl: ^1.1.0
+  color: ^2.1.0
   voronoi:
     git: git@github.com:MichaelFenwick/voronoi.git
 

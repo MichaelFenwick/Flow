@@ -1,5 +1,6 @@
 import 'dart:math' as Math;
-import 'package:stagexl/stagexl.dart';
+import 'package:color/color.dart';
+import 'package:stagexl/stagexl.dart' hide Color;
 
 class Cell extends Sprite implements Animatable {
   Point location;
@@ -8,6 +9,7 @@ class Cell extends Sprite implements Animatable {
   Point stageCenter = Point(0, 0);
   num stageRadius = 0;
   num get charge => size * size * size / 100; //TODO: Find a proper function for size:charge that gives the ideal output.
+  Color color = RgbColor.name("white");
 
   Cell(Point this.location, num this.size) : super();
 
@@ -48,7 +50,7 @@ class Cell extends Sprite implements Animatable {
     graphics
       ..clear()
       ..circle(location.x, location.y, size)
-      ..fillColor(Color.White);
+      ..fillColor(stagexlColor);
 
     return true;
   }
@@ -62,4 +64,8 @@ class Cell extends Sprite implements Animatable {
     return "Size: ${size.toStringAsFixed(2)}, X: ${location.x.toStringAsFixed(1)}, Y: ${location.y.toStringAsFixed(1)}";
   }
 
+  int get stagexlColor {
+    RgbColor rgbColor = color.toRgbColor();
+    return 0xFF000000 + 0x10000 * rgbColor.r + 0x100 * rgbColor.g + rgbColor.b;
+  }
 }

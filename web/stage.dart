@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'dart:math' as Math;
 import 'package:stagexl/stagexl.dart' as stagexl;
+import 'package:color/color.dart';
 
 import 'cell.dart';
 
@@ -67,6 +68,7 @@ class Stage extends stagexl.Stage implements stagexl.Animatable {
       Cell newCell = createNewCell();
       growingCells[newCell] = newCell.size; // Store the new cell with it's target size.
       newCell.size = 0; // Change the size to 0, since new cells should start small.
+      newCell.color = RgbColor.name("green");
       addCell(newCell);
     }
 
@@ -75,6 +77,7 @@ class Stage extends stagexl.Stage implements stagexl.Animatable {
       cell.size = Math.min(targetSize, cell.size + 0.5 * time);
       if (cell.size >= targetSize) {
         cellsToRemove.add(cell);
+        cell.color = RgbColor.name("white");
       }
     });
     cellsToRemove.forEach((Cell cell) => growingCells.remove(cell));
@@ -88,6 +91,7 @@ class Stage extends stagexl.Stage implements stagexl.Animatable {
         cell = cells[rand.nextInt(cells.length)];
       }
       shrinkingCells.add(cell);
+      cell.color = RgbColor.name("red");
     }
 
     List<Cell> cellsToRemove = [];
