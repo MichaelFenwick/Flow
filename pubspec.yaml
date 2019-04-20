@@ -1,14 +1,16 @@
 name: Flow
-description: A simple StageXL web app.
-# version: 1.0.0
-#homepage: https://www.example.com
-#author: Your Name <email@example.com>
+description: Just a fun toy to play around with.
+version: 1.0.0
+homepage: https://mikefenwick.com
+author: Mike Fenwick <mike@mikefenwick.com>
 
 environment:
   sdk: '>=2.1.0 <3.0.0'
 
 dependencies:
   stagexl: ^1.1.0
+  voronoi:
+    git: git@github.com:MichaelFenwick/voronoi.git
 
 dev_dependencies:
   build_runner: ^1.1.2
