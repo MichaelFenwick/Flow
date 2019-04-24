@@ -4,6 +4,7 @@ import 'package:stagexl/stagexl.dart' as stagexl;
 import 'package:color/color.dart';
 
 import 'cell.dart';
+import 'voronoi_net.dart';
 
 class Stage extends stagexl.Stage implements stagexl.Animatable {
 
@@ -39,6 +40,10 @@ class Stage extends stagexl.Stage implements stagexl.Animatable {
       Cell cell = createNewCell();
       addCell(cell);
     }
+
+    VoronoiNet voronoiNet = new VoronoiNet(cells);
+    stage.addChild(voronoiNet);
+    juggler.add(voronoiNet);
   }
 
   void addCell(Cell cell) {

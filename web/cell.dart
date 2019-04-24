@@ -47,10 +47,10 @@ class Cell extends Sprite implements Animatable {
       location = stageCenter + ((getNearestEdge() - stageCenter) * (1 - (size) / stageRadius));
     }
 
-    graphics
-      ..clear()
-      ..circle(location.x, location.y, size)
-      ..fillColor(stagexlColor);
+//    graphics
+//      ..clear()
+//      ..circle(location.x, location.y, size)
+//      ..fillColor(stagexlColor);
 
     return true;
   }

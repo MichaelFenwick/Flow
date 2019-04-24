@@ -6,7 +6,8 @@ import 'stage.dart' as flowStage;
 Future<Null> main() async {
   StageOptions options = StageOptions()
     ..backgroundColor = Color.White
-    ..renderEngine = RenderEngine.WebGL;
+    ..renderEngine = RenderEngine.WebGL
+    ..antialias = true;
 
   CanvasElement canvas = querySelector('#stage');
   int canvasHeight = canvas.clientHeight;
